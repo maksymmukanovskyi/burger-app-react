@@ -2,7 +2,7 @@
   "name": "burger-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://maksymmukanovskyi.github.io/burger-app-react",
+  "homepage": "https://maksymmukanovskyi.github.io/burger-app-react",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
