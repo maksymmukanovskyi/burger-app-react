@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import v4 from 'uuid/dist/v4';
 import "./App.css";
 import NoteList from "./Notes/NoteList";
 import NoteEditor from "./NoteEditor";
@@ -13,8 +14,9 @@ class App extends Component {
 
   handleAddNote = (text) => {
     this.setState((prevState) => ({
-      notes: [{ id: Date.now(), text }, ...prevState.notes],
+      notes: [{ id: v4(), text }, ...prevState.notes],
     }));
+    console.log(this.state)
   };
 
   render() {
@@ -22,7 +24,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Forms in js</h1>
-        <NoteEditor />
+        <NoteEditor onSubmit={this.handleAddNote}/>
         <NoteList notes={notes} />
       </div>
     );
