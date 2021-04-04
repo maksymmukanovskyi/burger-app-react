@@ -1,31 +1,44 @@
 import React, { Component } from "react";
-import v4 from 'uuid/dist/v4';
+import axios from "axios";
 import "./App.css";
-import NoteList from "./Notes/NoteList";
-import NoteEditor from "./NoteEditor";
+import ArticleList from "./ArticleList";
+
+const API_URL = "https://hn.algolia.com/api/v1/search?query=";
+const DEFAULT_QUERY = "react";
+const styles = {
+  header: { textAlign: "center" },
+};
+
+const mapper = articles => {
+  return articles.map(({objectID, url, title}) => ({
+    id: objectID,
+    link: url,
+    title
+  }))
+};
 
 class App extends Component {
   state = {
-    notes: [
-      { id: 1, text: "Adam" },
-      { id: 2, text: "Adam" },
-    ],
+    articles: [],
+    isLoading: false,
+    error: null,
   };
 
-  handleAddNote = (text) => {
-    this.setState((prevState) => ({
-      notes: [{ id: v4(), text }, ...prevState.notes],
-    }));
-    console.log(this.state)
-  };
+  componentDidMount() {
+    axios.get(API_URL + DEFAULT_QUERY).then((response) =>
+      this.setState({
+        articles: mapper(response.data.hits),
+      })
+    );
+  }
 
   render() {
-    const { notes } = this.state;
+    const { articles } = this.state;
+    console.log(articles);
     return (
       <div className="App">
-        <h1>Forms in js</h1>
-        <NoteEditor onSubmit={this.handleAddNote}/>
-        <NoteList notes={notes} />
+        <h1 className={styles.header}>ee</h1>
+        <ArticleList articles={articles} />
       </div>
     );
   }
