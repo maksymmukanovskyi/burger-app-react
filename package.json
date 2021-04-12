@@ -21,8 +21,7 @@
     "precommit": "lint-staged",
     "lint": "eslint src/**/*.{js}",
     "lint:fix": "eslint src/**/*.{js} --fix",
-    "lint:format": "prettier src/**/*.{js,jss,css,json} --write",
-    "server": "json-server --watch server/db.json --port 3004"
+    "lint:format": "prettier src/**/*.{js,jss,css,json} --write"
   },
   "eslintConfig": {
     "extends": [
