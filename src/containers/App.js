@@ -70,20 +70,13 @@ class App extends Component {
       btnClass = classes.Red;
     }
 
-    const assignedClasses = [];
-    if (persons.length <= 2) {
-      assignedClasses.push(classes.red); // classes = ['red']
-    }
-    if (persons.length <= 1) {
-      assignedClasses.push(classes.bold); // classes = ['red', 'bold']
-    }
-
     return (
       <div className={classes.App}>
         <Cockpit
           btnClass={btnClass}
           onToggle={this.togglePersonsHandler}
-          assignedClasses={assignedClasses}
+          classes={classes}
+          persons={persons}
         />
         {createdPersons}
       </div>
