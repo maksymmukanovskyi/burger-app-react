@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import classes from './App.module.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
@@ -53,29 +52,23 @@ class App extends Component {
 
   render() {
     let createdPersons = null;
-    let btnClass = '';
     const { showPersons, persons } = this.state;
 
     if (showPersons) {
       createdPersons = (
-        <div>
-          <Persons
-            persons={persons}
-            onDelete={this.deletePersonHandler}
-            onChange={this.nameChangedHandler}
-          />
-        </div>
+        <Persons
+          persons={persons}
+          onDelete={this.deletePersonHandler}
+          onChange={this.nameChangedHandler}
+        />
       );
-
-      btnClass = classes.Red;
     }
 
     return (
-      <div className={classes.App}>
+      <div>
         <Cockpit
-          btnClass={btnClass}
+          showPersons={showPersons}
           onToggle={this.togglePersonsHandler}
-          classes={classes}
           persons={persons}
         />
         {createdPersons}
