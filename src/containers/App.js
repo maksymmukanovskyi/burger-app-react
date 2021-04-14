@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+import withClass from '../hoc/withClass';
+import styles from './App.module.css';
 
 class App extends Component {
   state = {
@@ -76,5 +78,4 @@ class App extends Component {
     );
   }
 }
-
-export default App;
+export default withClass(App, styles.App);
